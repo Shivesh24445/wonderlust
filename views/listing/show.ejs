@@ -1,0 +1,60 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="card shadow-lg">
+      <div class="card-header bg-primary text-white rounded-top">
+        <h4 class="mb-0 font-weight-bold" style="font-size: 1.8rem;">Listing Details</h4>
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+          <!-- Image -->
+          <div class="col-12 col-md-5 text-center mb-3 mb-md-0">
+            <img 
+              src="<%= list.image.url %>" 
+              alt="Listing Image" 
+              class="img-fluid rounded"
+              style="height: 300px; width: 100%; object-fit: cover;">
+          </div>
+
+          <!-- Price + Location + Country -->
+          <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
+            <p class="text-success font-weight-bold" style="font-size: 1.6rem; line-height: 1.6;">
+              Price: ₹ <%= typeof list.price === 'number' ? list.price.toLocaleString("en-IN") : "N/A" %>/Night
+            </p>
+            <div class="d-flex flex-column flex-md-row mb-2">
+              <span class="mr-md-4" style="font-size: 1.1rem; font-weight: 500;">
+                <strong>Country:</strong> <%= list.country %>
+              </span>
+              <span style="font-size: 1.1rem; font-weight: 500;">
+                <strong>Location:</strong> <%= list.location %>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Title and Description -->
+        <ul class="list-group list-group-flush my-3">
+          <li class="list-group-item">
+            <strong style="font-size: 1.2rem;">Title:</strong>
+            <span style="font-size: 1.2rem; font-weight: 600;"><%= list.title %></span>
+          </li>
+          <li class="list-group-item">
+            <strong>Description:</strong> <%= list.description %>
+          </li>
+        </ul>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-start gap-3">
+          <form action="/listing/<%= list._id %>/edit" method="get" class="mr-2">
+            <button class="btn btn-outline-warning rounded-pill px-4 py-2 font-weight-bold">Edit</button>
+          </form>
+          <form action="/listing/<%= list._id %>?_method=DELETE" method="post">
+            <button class="btn btn-outline-danger rounded-pill px-4 py-2 font-weight-bold">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

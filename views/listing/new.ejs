@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h2 class="card-title text-center text-primary mb-4">Create a New Listing</h2>
+        <form action="/listing" method="post" novalidate class="needs-validation">
+          <div class="form-group">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="listing[title]" id="title" class="form-control" placeholder="Title" required>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" id="description" class="form-control" placeholder="Description" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="image" class="form-label">Image URL</label>
+            <input type="text" name="listing[image][url]" id="image" class="form-control" placeholder="Enter Image URL">
+          </div>
+
+          <!-- Responsive Row -->
+          <div class="form-row">
+            <div class="form-group col-12 col-md-6 col-lg-4 ">
+              <label for="location " class="form-label">Location</label>
+              <input type="text" name="listing[location]" id="location" class="form-control" placeholder="Location" required>
+            </div>
+            <div class="form-group col-12 col-md-6 col-lg-4  form-label">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" name="listing[country]" id="country" class="form-control" placeholder="Country" required>
+            </div>
+            <div class="form-group col-12 col-md-12 col-lg-4  form-label">
+              <label for="price" class="form-label">Price (₹)</label>
+              <input type="number" name="listing[price]" id="price" class="form-control" placeholder="Price" required>
+            </div>
+          </div>
+
+          <div class="text-center mt-4 ">
+            <button class="btn btn-success px-4 form-label">Submit Your Info</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
